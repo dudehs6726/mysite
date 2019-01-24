@@ -1,0 +1,25 @@
+package com.douzon.mvc.util;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class WebUtils {
+	public static void redirect(
+			HttpServletRequest request, HttpServletResponse response, String url) 
+					throws IOException, ServletException {
+		
+		response.sendRedirect(url);
+	}
+	
+	public static void forward(
+			HttpServletRequest request, HttpServletResponse response, String location) 
+					throws IOException, ServletException {
+		//요청 분리
+		RequestDispatcher rd = request.getRequestDispatcher(location);
+		rd.forward(request, response);
+	}
+}
