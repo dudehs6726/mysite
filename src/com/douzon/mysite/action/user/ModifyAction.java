@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 
 import com.douzon.mvc.action.Action;
@@ -28,6 +29,10 @@ public class ModifyAction implements Action {
 		vo.setNo(Long.parseLong(no));
 		
 		new UserDao().update(vo);
+		
+		/* 인증성공 -> 인증처리 */
+		HttpSession session = request.getSession(true);
+		session.setAttribute("authuser", vo);
 		
 		WebUtils.redirect(request, response, request.getContextPath());
 	}

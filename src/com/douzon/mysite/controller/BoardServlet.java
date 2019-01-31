@@ -10,23 +10,24 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.douzon.mvc.action.AbstractActionFactory;
 import com.douzon.mvc.action.Action;
-import com.douzon.mysite.action.user.UserActionFactory;
+import com.douzon.mysite.action.board.BoardActionFactory;
 
-@WebServlet("/user")
-public class UserServlet extends HttpServlet {
+
+@WebServlet("/board")
+public class BoardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//request.setCharacterEncoding("utf-8");
 		String actionName = request.getParameter("a");
 		
-		AbstractActionFactory af = new UserActionFactory();
+		AbstractActionFactory af = new BoardActionFactory();
 		Action action = af.getAction(actionName);
 		action.excute(request, response);
-		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

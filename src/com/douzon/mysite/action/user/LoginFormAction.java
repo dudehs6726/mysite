@@ -13,6 +13,7 @@ public class LoginFormAction implements Action {
 
 	@Override
 	public void excute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		
 		WebUtils.forward(request, response, "/WEB-INF/views/user/loginform.jsp");
 	}
 

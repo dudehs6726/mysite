@@ -14,15 +14,15 @@
 		<c:import url ="/WEB-INF/views/includes/header.jsp"/>
 		<div id="content">
 			<div id="board">
-				<form class="board-form" method="post" action="${pageContext.servletContext.contextPath }/board?a=write" enctype="multipart/form-data">
-					
+				<form class="board-form" method="post" action="${pageContext.servletContext.contextPath }/board?a=answer" enctype="multipart/form-data">
+					<input type = "hidden" name = "no" value="${vo.no }">
 					<table class="tbl-ex">
 						<tr>
 							<th colspan="2">글쓰기</th>
 						</tr>
 						<tr>
 							<td class="label">제목</td>
-							<td><input type="text" name="title" value=""></td>
+							<td><input type="text" name="title" value="re: ${vo.title }"></td>
 						</tr>
 						<tr>
 							<td class="label">내용</td>
@@ -38,7 +38,7 @@
 						</tr>
 					</table>
 					<div class="bottom">
-						<a href="${pageContext.servletContext.contextPath }/board?a=list&page=1">취소</a>
+						<a href="${pageContext.servletContext.contextPath }/board?a=view&no=${vo.no}">취소</a>
 						<input type="submit" value="등록">
 					</div>
 				</form>				
